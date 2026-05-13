@@ -1,10 +1,10 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from config import Config
 from routes import Router
 from models import db
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='views',static_folder='static')
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 config = Config(app)
 router = Router(app)
@@ -24,7 +24,7 @@ def index():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    pass
+    return render_template('dashboard.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
