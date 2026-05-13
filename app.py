@@ -5,8 +5,8 @@ from routes import Router
 from models import db
 
 app = Flask(__name__, template_folder='views',static_folder='static')
+app.config.from_object(Config)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-config = Config(app)
 router = Router(app)
 
 
