@@ -12,6 +12,7 @@ const getCurrentTemp=async ()=>{
         if(data){
             temperatura.innerHTML=`${data.temperature}°C`;
             humidade.innerHTML=`${data.humidity}%`;
+            qualidade_ar.innerHTML=`${data.air_quality}`;
         }
 
     }catch(err){
