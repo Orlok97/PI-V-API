@@ -45,3 +45,14 @@ def get_current_temp():
         'air_quality':current_temp.air_quality,
         'date_hour':current_temp.date_hour
     }),200
+
+@sensor_bp.route('/<int:id>',methods=['GET'])
+def get_by_id(id):
+    sensor=db.get_or_404(Sensor,id)
+    return jsonify({
+        'id': sensor.id,
+        'temperature':sensor.temperature,
+        'humidity':sensor.humidity,
+        'air_quality':sensor.air_quality,
+        'date_hour':sensor.date_hour
+    }),200
